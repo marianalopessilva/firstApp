@@ -21,9 +21,9 @@ def main(page: ft.Page):
 
 
         if int(idade) >= 18:
-            txt_resultado.value = f'Maior de idade'
+            txt_resultado.value = f'Tenho {idade} anos e sou maior de idade'
         else:
-            txt_resultado.value = f'Menor de idade'
+            txt_resultado.value = f'Tenho {idade} anos e sou menor de idade'
         page.update()
     # criação de componentes
     input_data_de_nascimento = ft.TextField(label="Data de Nascimento", hint_text="Digite sua data de nascimento")
