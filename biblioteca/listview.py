@@ -1,6 +1,7 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
+from flet.core.types import CrossAxisAlignment
 
 
 class user():
@@ -32,6 +33,8 @@ def main(page: ft.Page):
             )
             lista.append(obj_user)
             input_nome.value = ""
+            input_profissao.value = ""
+            input_salario.value = ""
             page.overlay.append(msg_sucesso)
             msg_sucesso.open = True
             page.update()
@@ -54,19 +57,26 @@ def main(page: ft.Page):
             View(
                 "/",
                 [
-                    AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
+                    ft.Container(
+                        ft.Image(src='users.jpg', width=300, height=200),
+                    ),
+                    AppBar(title=Text(""), bgcolor=Colors.BLACK),
                     input_nome,
                     input_profissao,
                     input_salario,
                     ft.Button(
                         text="Salvar",
+                        color=Colors.WHITE,
                         on_click=lambda _: salvar_nome(e)
                     ),
                     ft.Button(
                         text="Exibir Lista",
+                        color=Colors.WHITE,
                         on_click=lambda _: page.go("/segunda"),
                     )
                 ],
+                bgcolor=Colors.BLACK,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
             )
         )
         if page.route == "/segunda":
@@ -75,10 +85,11 @@ def main(page: ft.Page):
                 View(
                     "/segunda",
                     [
-                        AppBar(title=Text("Segunda tela"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        AppBar(title=Text(""), bgcolor=Colors.BLACK),
                         lv_nome,
 
                     ],
+                    bgcolor=Colors.BLACK,
                 )
             )
         page.update()
